@@ -1,0 +1,29 @@
+Exercise 2: 
+
+1. Problem Identification:
+The problem is to design a modular framework for Numerical Integration. This system allows approximating the definite integral of a mathematical function over a specific interval [a, b] using different numerical techniques.
+
+2. Static Properties and Behaviors:
+Object: NumericalIntegrator
+
+- Static Properties:
+    * lower_limit (float): The start of the interval 'a'.
+    * upper_limit (float): The end of the interval 'b'.
+    * intervals (int): Number of sub-intervals (n) for the partition.
+    * target_function: The mathematical function f(x) to be integrated.
+
+- Behavior:
+    * compute_step_size(): Calculates the width h = (b - a) / n.
+    * integrate(): An abstract operation to execute the numerical approximation.
+
+3. Inheritance and Polymorphism:
+
+- Inheritance:
+A base class called "Integrator" contains the shared attributes (a, b, n). We then derive specific subclasses for each numerical method:
+    * Class TrapezoidalRule: Inherits from Integrator.
+    * Class SimpsonsRule: Inherits from Integrator.
+
+- Polymorphism:
+Polymorphism is implemented through the "integrate()" function. Although the method name is the same for all objects, the underlying algorithm changes depending on the class:
+    * In TrapezoidalRule: It calculates the area using linear approximations for each sub-interval.
+    * In SimpsonsRule: It calculates the area using parabolic arcs, providing higher accuracy for smooth functions.
